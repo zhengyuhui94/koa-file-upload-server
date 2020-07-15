@@ -17,7 +17,6 @@ router.post('/uploadfile', async (ctx, next) => {
         fileDirType = 'image';
     }
 
-    console.log(file);
     // 创建可读流，读取指定 file.path 的文件
     const readStream = fs.createReadStream(file.path);
     // 存储文件的目录
