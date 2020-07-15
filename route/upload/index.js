@@ -26,7 +26,7 @@ router.post('/uploadfile', async (ctx, next) => {
     // 存储的文件完整路径
     let filePath = `${fileDirPath}/${fileName}`;
     // 文件存储的可访问的远程服务路径
-    let remoteFilePath = `http://81.70.15.16/files/${fileDirType}/${filePath}`;
+    let remoteFilePath = `http://81.70.15.16/files/${fileDirType}/${fileName}`;
     // 创建可写流，写入到指定 filePath 的文件
     let writeStream = fs.createWriteStream(filePath);
     // 将文件的可读流通过管道流入到可写流的来源流中
