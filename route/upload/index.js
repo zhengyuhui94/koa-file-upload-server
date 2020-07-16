@@ -15,6 +15,8 @@ router.post('/uploadfile', async (ctx, next) => {
     // 图片
     if(file.type.indexOf('image') !== -1){
         fileDirType = 'image';
+    }else{
+        fileDirType = 'file';
     }
 
     // 创建可读流，读取指定 file.path 的文件
