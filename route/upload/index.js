@@ -35,6 +35,8 @@ router.post('/uploadfile', async (ctx, next) => {
     readStream.pipe(writeStream);
     // 解决跨域
     ctx.set('Access-Control-Allow-Origin', '*');
+    // 允许跨域请求的请求方法
+    ctx.set('Access-Control-Allow-Methods', 'POST');
     // 给前端返回响应数据
     ctx.body = {
         code: 0,
