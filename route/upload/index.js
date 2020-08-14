@@ -33,10 +33,6 @@ router.post('/uploadfile', async (ctx, next) => {
     let writeStream = fs.createWriteStream(filePath);
     // 将文件的可读流通过管道流入到可写流的来源流中
     readStream.pipe(writeStream);
-    // 解决跨域
-    ctx.set('Access-Control-Allow-Origin', '*');
-    // 允许跨域请求的请求方法
-    ctx.set('Access-Control-Allow-Methods', 'POST');
     // 给前端返回响应数据
     ctx.body = {
         code: 0,
