@@ -21,18 +21,11 @@ app.use(koaBody({
 
 // 设置跨域中间件，需要设置在所有响应之前
 app.use(async (ctx, next) => {
-    // 解决跨域的 origin
-    // 当设置 Access-Control-Allow-Credentials 为 true 时，必须要指定特定的跨域 origin，
-    // 不能设置为 *
-    ctx.set('Access-Control-Allow-Origin', ctx.headers.origin);
-    // 允许跨域时，获取客户端域名的 cookie
-    ctx.set('Access-Control-Allow-Credentials', true);
-    // 跨域时携带的参数类型默认只能解析以下三种MIME类型：
-    // application/x-www-form-urlencoded、multipart/form-data 或 text/plain 
-    // 不包括参数，即 application/json，如果要支持的话，需要添加该响应头
-    ctx.set('Access-Control-Allow-Headers', 'content-type');
+    // 需要所有请求来源进行跨域
+    ctx.set('Access-Control-Allow-Origin', '*');
     // 允许的跨域方法
-    ctx.set('Access-Control-Allow-Methods', 'OPTIONS,GET,HEAD,PUT,POST,DELETE,PATCH');
+    // post 请求接口的时候，会有预请求，即 options 请求，因此需要将 OPTIONS 加上
+    ctx.set('Access-Control-Allow-Methods', 'OPTIONS,POST');
     await next();
 });
 
